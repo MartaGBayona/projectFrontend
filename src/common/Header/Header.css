@@ -1,12 +1,17 @@
-.headerDesign{
-    height: 16vh;
-    width: 100vww;
+.headerDesign {
 
-    background-color: grey;
+    height:12vh;
+    width: 100vw;
+
+    background-color: darkcyan;
 
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: row;
     justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.authMenu {
+    display: flex;
     flex-direction: row;
 }

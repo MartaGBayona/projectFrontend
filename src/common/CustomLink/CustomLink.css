@@ -1,0 +1,12 @@
+.navigateDesign {
+    font-weight: bold;
+    
+    transition: 0.3;
+    background-color: blue;
+    margin: 1em;
+}
+
+.navigateDesign:hover{
+    transition: 0.3;
+    cursor: pointer;
+}
