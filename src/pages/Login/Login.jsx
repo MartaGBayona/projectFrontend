@@ -19,7 +19,7 @@ export const Login = () => {
                 design="inputDesign"
                 type="text"
                 name="email"
-                value=""
+                value={credenciales.email || ""}
                 placeholder="write your email"
                 functionChange={inputHandler}
             />
@@ -27,7 +27,7 @@ export const Login = () => {
                 design="inputDesign"
                 type="password"
                 name="password"
-                value=""
+                value={credenciales.password || ""}
                 placeholder="write your password"
                 functionChange={inputHandler}
             />

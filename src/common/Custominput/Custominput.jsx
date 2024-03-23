@@ -1,6 +1,7 @@
 
 import "./Custominput.css"
 
+// eslint-disable-next-line react/prop-types
 export const CustomInput = ({ design, type, name, value, placeholder, functionChange }) => {
     return (
         <input

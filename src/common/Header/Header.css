@@ -1,9 +1,11 @@
 .headerDesign {
 
-    height:12vh;
+    height:4vh;
     width: 100vw;
 
-    background-color: darkcyan;
+    background-color: rgb(220, 160, 80);
+
+    color: aliceblue;
 
     display: flex;
     flex-direction: row;

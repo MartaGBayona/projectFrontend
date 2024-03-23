@@ -1,12 +1,15 @@
+
 .navigateDesign {
     font-weight: bold;
-    
-    transition: 0.3;
-    background-color: blue;
-    margin: 1em;
+    font-size: small;
+    font-family: "Josefin Sans", sans-serif;
+    color: aliceblue;
+    transition: 0.5;
+    margin: 1.3em;
 }
 
 .navigateDesign:hover{
-    transition: 0.3;
+    transition: 0.5;
     cursor: pointer;
+    color: rgb(231, 229, 229);
 }

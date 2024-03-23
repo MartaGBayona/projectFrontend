@@ -1,9 +1,14 @@
 .homeDesign {
 
-    height: 88vh;
+    height: 96vh;
     width: 100vw;
 
-    background-color: beige;
+    background-color: rgb(30, 26, 29);
+
+    font-weight: bold;
+    font-size: xx-large;
+    font-family: "Josefin Sans", sans-serif;
+    font-style: normal;
 
     display: flex;
     flex-direction: column;
