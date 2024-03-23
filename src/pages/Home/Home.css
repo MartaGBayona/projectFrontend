@@ -5,13 +5,33 @@
 
     background-color: rgb(30, 26, 29);
 
-    font-weight: bold;
-    font-size: xx-large;
-    font-family: "Josefin Sans", sans-serif;
-    font-style: normal;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+
+}
+
+.titleDesign {
+    font-weight: bold;
+    font-size: xxx-large;
+    font-family: 'Trebuchet MS', sans-serif;
+
+    margin-top: 1em;
+}
+
+.subTitleDesign {
+    font-weight: bold;
+    font-size: x-large;
+    font-family: "Josefin Sans", sans-serif;
+
+    margin: 1.5em;
+}
+
+.descriptionDesign {
+    font-size: large;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: left;
+
+    margin: 1.5em;
 }
