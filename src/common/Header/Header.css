@@ -16,9 +16,16 @@
     top: 0;
     left: 0;
     z-index: 1000;
+    transition: 0.3s;
 }
 
 .authMenu {
     display: flex;
     flex-direction: row;
+}
+
+.headerScroll {
+    transition: 0.3s;
+    opacity: 0;
+    color: rgb(220, 160, 80);
 }

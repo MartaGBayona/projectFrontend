@@ -8,9 +8,9 @@ export const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const headerOnTop = window.scrollY || document.documentElement.headerOnTop;
-
-            if(headerOnTop > 0) {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            console.log("scroll top", scrollTop)
+            if(scrollTop > 0) {
                 setheaderScroll(true);
             } else {
                 setheaderScroll(false);
@@ -22,7 +22,6 @@ export const Header = () => {
             window.removeEventListener("scroll", handleScroll)
         };
     }, []);
-
 
     //const navigate = useNavigate();
     const token = false;
