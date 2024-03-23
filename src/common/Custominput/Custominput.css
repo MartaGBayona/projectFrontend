@@ -1,0 +1,13 @@
+.inputDesign {
+    height: 3em;
+    width: 18em;
+
+    border: 0.2em solid rgb(49, 47, 47);
+    border-radius: 0.2em;
+    margin: 1.5em;
+    background-color: rgb(260, 260, 260);
+}
+
+.inputDesignError {
+    border: 0.2em solid rgb(196, 32, 33);
+}

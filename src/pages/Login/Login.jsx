@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import { CustomInput } from "../../common/Custominput/Custominput"
+import { useNavigate } from "react-router-dom";
 import "./Login.css"
 
 export const Login = () => {
+    const navigate =useNavigate()
 
     const [credenciales, setCredenciales] = useState({
         email: "",
@@ -20,7 +22,7 @@ export const Login = () => {
                 type="text"
                 name="email"
                 value={credenciales.email || ""}
-                placeholder="write your email"
+                placeholder="Email"
                 functionChange={inputHandler}
             />
             <CustomInput
@@ -28,7 +30,7 @@ export const Login = () => {
                 type="password"
                 name="password"
                 value={credenciales.password || ""}
-                placeholder="write your password"
+                placeholder="Contraseña"
                 functionChange={inputHandler}
             />
         </div>

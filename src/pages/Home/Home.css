@@ -7,31 +7,38 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 
+    overflow-x: hidden;
 }
 
 .titleDesign {
     font-weight: bold;
     font-size: xxx-large;
-    font-family: 'Trebuchet MS', sans-serif;
 
     margin-top: 1em;
 }
 
-.subTitleDesign {
+.contentDesign {
+    font-family: "Josefin Sans", sans-serif;
+    text-align: left;
+
+    margin-top: 1.5em;
+    margin-left: 3em;
+    margin-right: 2em;
+}
+
+
+
+.descriptionTitleDesign {
     font-weight: bold;
     font-size: x-large;
-    font-family: "Josefin Sans", sans-serif;
 
-    margin: 1.5em;
+    margin-top: 1em;
 }
 
 .descriptionDesign {
     font-size: large;
-    font-family: "Josefin Sans", sans-serif;
-    text-align: left;
-
-    margin: 1.5em;
+    margin-top: 1em;
 }
