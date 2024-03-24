@@ -4,6 +4,7 @@ import { CustomLink } from "../CustomLink/CustomLink"
 import "./Header.css"
 
 export const Header = () => {
+    //const navigate = useNavigate();
     const [headerScroll, setheaderScroll] = useState (false);
 
     useEffect(() => {
@@ -23,7 +24,6 @@ export const Header = () => {
         };
     }, []);
 
-    //const navigate = useNavigate();
     const token = false;
     return (
         <div className={headerScroll ? "headerDesign scrolled" : "headerDesign"}>
@@ -45,7 +45,6 @@ export const Header = () => {
 
                     </div>)
                     : (<div className="authMenu">
-
                         <CustomLink
                             title="Login"
                             destination="/login"
@@ -54,7 +53,6 @@ export const Header = () => {
                             title="Register"
                             destination="/register"
                         />
-
                     </div>)
             }
         </div>

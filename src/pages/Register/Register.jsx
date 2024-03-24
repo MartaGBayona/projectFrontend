@@ -1,6 +1,10 @@
 import "./Register.css"
+import { Header } from "../../common/Header/Header"
 export const Register = () => {
     return (
-        <div className="registerDesign">soy Register</div>
+        <>
+            <Header />
+            <div className="registerDesign">soy Register</div>
+        </>
     )
 }

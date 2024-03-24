@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { CustomInput } from "../../common/Custominput/Custominput"
 import { useNavigate } from "react-router-dom";
+import { Header } from "../../common/Header/Header";
 import "./Login.css"
 
 export const Login = () => {
@@ -16,6 +17,8 @@ export const Login = () => {
     }
 
     return (
+        <>
+        <Header/>
         <div className="loginDesign">
             <CustomInput
                 design="inputDesign"
@@ -34,5 +37,6 @@ export const Login = () => {
                 functionChange={inputHandler}
             />
         </div>
+        </>
     )
 }
