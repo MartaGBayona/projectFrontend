@@ -31,7 +31,7 @@ export const Login = () => {
         if (tokenStorage) {
             navigate("/")
         }
-    }, [tokenStorage]);
+    }, [tokenStorage, navigate]);
 
     const inputHandler = (e) => {
         setCredenciales((prevState) => ({
@@ -92,7 +92,7 @@ export const Login = () => {
                     name={"email"}
                     disabled={""}
                     value={credenciales.email || ""}
-                    onChange={(e) => inputHandler(e)}
+                    onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                     
                 />
@@ -105,7 +105,7 @@ export const Login = () => {
                     name="password"
                     disabled={""}
                     value={credenciales.password || ""}
-                    onChange={(e) => inputHandler(e)}
+                    onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                 />
                 <div className="error">{credencialesError.passwordError}</div>

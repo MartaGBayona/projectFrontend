@@ -18,7 +18,7 @@ export const validate = (type, value) => {
                 const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
                 if(!emailRegex.test(value)) {
-                    return "EL formato del correo es incorrecto"
+                    return "El formato del correo es incorrecto"
                 }
             
             return "";
@@ -28,5 +28,9 @@ export const validate = (type, value) => {
                 if(!value.length < 6 || !value.length >10) {
                     return "El password debe contener entre 6 y 10 caracteres"
                 }
+
+                return "";
+            default:
+                console.log("mensaje default")
     }
 }

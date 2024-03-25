@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { CustomLink } from "../CustomLink/CustomLink"
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Header.css"
 
 export const Header = () => {
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
+    const passport = JSON.parse(localStorage.getItem("passport"));
     const [headerScroll, setheaderScroll] = useState (false);
 
     useEffect(() => {
@@ -24,34 +25,41 @@ export const Header = () => {
         };
     }, []);
 
-    const token = false;
+
+    const logOut =() => {
+        localStorage.removeItem("passport")
+        navigate("/login")
+    }
+
     return (
         <div className={headerScroll ? "headerDesign scrolled" : "headerDesign"}>
             <CustomLink
-                title="Home"
-                destination="/"
+                title={"Home"}
+                destination={"/"}
             />
-            {
-                token
+            {passport?.token
                     ? (<div className="authMenu">
                         <CustomLink
-                            title="name"
-                            destination="/profile"
+                            title={passport?.decoded?.name}
+                            destination={"/profile"}
                         />
                         <CustomLink
                             title="Log-out"
                             destination="/"
                         />
-
-                    </div>)
-                    : (<div className="authMenu">
+                        <div onClick={logOut}>
+                            <CustomLink title={"cerrar sesión"}
+                            destination={"/"} />
+                        </div>
+                    </div>
+                    ): (<div className="authMenu">
                         <CustomLink
-                            title="Login"
-                            destination="/login"
+                            title={"Login"}
+                            destination={"/login"}
                         />
                         <CustomLink
-                            title="Register"
-                            destination="/register"
+                            title={"Register"}
+                            destination={"/register"}
                         />
                     </div>)
             }
