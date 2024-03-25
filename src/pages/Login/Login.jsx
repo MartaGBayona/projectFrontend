@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../../common/Header/Header";
 import { validate } from "../../utils/functions";
 import { decodeToken } from "react-jwt"
+import { LoginUser } from "../../services/apiCalls";
 import "./Login.css"
+import e from "cors";
 
 
 export const Login = () => {
@@ -56,8 +58,23 @@ export const Login = () => {
             const fetched = await LoginUser(credenciales);
 
             const decoded = decodeToken(fetched.token)
-        } catch (error) {
 
+            const passport = {
+                token: fetched.token,
+                decoded: decoded,
+            };
+
+            localStorage.setItem("passport", JSON.stringify(passport));
+
+            setMsgError(
+                `Bienvenido de nuevo ${decoded.name}`
+            );
+
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
+        } catch (error) {
+            setMsgError(error.message)
         }
     }
 
@@ -66,21 +83,31 @@ export const Login = () => {
             <Header />
             <div className="loginDesign">
                 <CustomInput
-                    design="inputDesign"
-                    type="text"
-                    name="email"
+                    className={`inputDesign ${
+                        credencialesError.emailError !== "" ? "inputDesignError" : ""
+                    }`}
+                    type={"email"}
+                    placeholder={"email"}
+                    name={"email"}
+                    disabled={""}
                     value={credenciales.email || ""}
-                    placeholder="Email"
-                    functionChange={inputHandler}
+                    onChange={(e) => inputHandler(e)}
+                    onBlurFunction={(e) => checkError(e)}
+                    
                 />
+                <div className="error">{credencialesError.emailError}</div>
                 <CustomInput
-                    design="inputDesign"
-                    type="password"
+                    className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
+                    }`}
+                    type={"password"}
+                    placeholder={"contraseña"}
                     name="password"
+                    disabled={""}
                     value={credenciales.password || ""}
-                    placeholder="Contraseña"
-                    functionChange={inputHandler}
+                    onChange={(e) => inputHandler(e)}
+                    onBlurFunction={(e) => checkError(e)}
                 />
+                <div className="error">{credencialesError.passwordError}</div>
             </div>
         </>
     )

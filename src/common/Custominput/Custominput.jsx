@@ -2,15 +2,17 @@
 import "./Custominput.css"
 
 // eslint-disable-next-line react/prop-types
-export const CustomInput = ({ design, type, name, value, placeholder, functionChange }) => {
+export const CustomInput = ({ className, type, name, value, placeholder,disabled, functionChange, onBlurFunction }) => {
     return (
         <input
-            className={design}
+            className={className}
             type={type}
-            name={name}
-            value={value}
             placeholder={placeholder}
+            name={name}
+            disabled={disabled}
+            value={value}
             onChange={functionChange}
+            onBlur={onBlurFunction}
             
         />
     )
