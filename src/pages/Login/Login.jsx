@@ -5,8 +5,9 @@ import { Header } from "../../common/Header/Header";
 import { validate } from "../../utils/functions";
 import { decodeToken } from "react-jwt"
 import { LoginUser } from "../../services/apiCalls";
+import { CustomButton } from "../../common/customButton/customButton";
 import "./Login.css"
-import e from "cors";
+
 
 
 export const Login = () => {
@@ -108,6 +109,13 @@ export const Login = () => {
                     onBlurFunction={(e) => checkError(e)}
                 />
                 <div className="error">{credencialesError.passwordError}</div>
+
+                <CustomButton
+                    className={"buttonDesign"}
+                    title={"Acceso"}
+                    functionEmit={LoginMe}
+                    />
+                    <div className="error">{msgError}</div>
             </div>
         </>
     )

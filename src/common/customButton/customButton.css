@@ -1,0 +1,23 @@
+.buttonDesign {
+    height: 3em;
+    width: 15em;
+
+    border-radius: 0.2em;
+
+    background-color: rgb(49, 47, 47);
+    color: rgb(220, 160, 80);
+    font-weight: bold;
+    border: 0.2em solid rgb(220, 160, 80);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.buttonDesign:hover {
+
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgb(260, 260, 260);
+}
