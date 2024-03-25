@@ -1,0 +1,44 @@
+.homeDesign {
+
+    height: 100vh;
+    width: 100vw;
+
+    background-color: rgb(30, 26, 29);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-x: hidden;
+}
+
+.titleDesign {
+    font-weight: bold;
+    font-size: xxx-large;
+
+    margin-top: 1em;
+}
+
+.contentDesign {
+    font-family: "Josefin Sans", sans-serif;
+    text-align: left;
+
+    margin-top: 1.5em;
+    margin-left: 3em;
+    margin-right: 2em;
+}
+
+
+
+.descriptionTitleDesign {
+    font-weight: bold;
+    font-size: x-large;
+
+    margin-top: 1em;
+}
+
+.descriptionDesign {
+    font-size: large;
+    margin-top: 1em;
+}
