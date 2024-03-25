@@ -11,13 +11,15 @@ export const Register = () => {
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
-        name: "",
+        firstName: "",
+        secondName: "",
         email: "",
         password: "",
     });
 
     const [userError, setUserError] = useState({
-        nameError: "",
+        firstNameError: "",
+        secondNameError: "",
         emailError: "",
         passwordError: "",
     });
@@ -27,16 +29,21 @@ export const Register = () => {
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
-            [e.target.name]: e.target.value,
+            [e.target.firstName]: e.target.value,
+            [e.target.secondName]: e.target.value
         }));
     };
 
     const checkError = (e) => {
-        const error = validate(e.target.name, e.target.value);
+        const errorFirstName = validate(e.target.firstName, e.target.value);
+        const errorSecondName = validate(e.target.secondName, e.target.value)
+
+        
 
         setUserError((prevState) => ({
             ...prevState,
-            [e.target.name + "Error"]: error
+            [e.target.firstName + "Error"]: errorFirstName,
+            [e.target.secondName + "Error"]: errorSecondName
         }));
     };
 
@@ -66,16 +73,27 @@ export const Register = () => {
             <Header />
             <div className="registerDesign">
                 <CustomInput
-                    className={`inputDesign ${userError.nameError !== "" ? "inputDesignError" : ""
+                    className={`inputDesign ${userError.errorFirstName !== "" ? "inputDesignError" : ""
                         }`}
                     type={"text"}
                     placeholder={"nombre"}
-                    name={"name"}
+                    name={"firstName"}
                     value={user.name || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                 />
-                <div className="error">{userError.nameError}</div>
+                <div className="error">{userError.errorFirstName}</div>
+                <CustomInput
+                    className={`inputDesign ${userError.errorSecondName !== "" ? "inputDesignError" : ""
+                        }`}
+                    type={"text"}
+                    placeholder={"Apellido"}
+                    name={"secondName"}
+                    value={user.name || ""}
+                    onChangeFunction={(e) => inputHandler(e)}
+                    onBlurFunction={(e) => checkError(e)}
+                />
+                <div className="error">{userError.errorSecondName}</div>
                 <CustomInput
                     className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
                         }`}
