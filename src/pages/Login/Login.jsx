@@ -40,10 +40,25 @@ export const Login = () => {
     const checkError = (e) => {
         const error = validate(e.target.name, e.target.value);
 
-        setCredencialesError((prevState) =>({
+        setCredencialesError((prevState) => ({
             ...prevState,
             [e.target.name + "Error"]: error
         }))
+    }
+    const LoginMe = async () => {
+        try {
+            for (let elemento in credenciales) {
+                if (credenciales[elemento] === "") {
+                    throw new Error("Debes rellenar todos los campos");
+                }
+            }
+
+            const fetched = await LoginUser(credenciales);
+
+            const decoded = decodeToken(fetched.token)
+        } catch (error) {
+
+        }
     }
 
     return (
