@@ -102,7 +102,7 @@ export const Profile = () => {
                             placeholder={""}
                             name={"firstName"}
                             disabled={write}
-                            value={user.name || ""}
+                            value={user.firstName || ""}
                             onChangeFunction={(e) => inputHandler(e)}
                             onBlurFunction={(e) => checkError(e)}
                         />
@@ -113,7 +113,7 @@ export const Profile = () => {
                             placeholder={""}
                             name={"secondName"}
                             disabled={write}
-                            value={user.surname || ""}
+                            value={user.secondName || ""}
                             onChangeFunction={(e) => inputHandler(e)}
                             onBlurFunction={(e) => checkError(e)}
                         />
