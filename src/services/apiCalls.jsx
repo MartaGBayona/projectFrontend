@@ -47,3 +47,27 @@ export const LoginUser = async (credenciales) => {
         return error;
     }
 };
+
+export const GetServices = async (services) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(services)
+    };
+
+    try {
+        const response = await fetch(`${root}services`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
