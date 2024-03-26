@@ -50,7 +50,7 @@ export const LoginUser = async (credenciales) => {
 
 export const GetServices = async (services) => {
     const options = {
-        method: "POST",
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
