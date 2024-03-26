@@ -1,4 +1,4 @@
-/* eslint-disable no-case-declarations */
+
 export const validate = (type, value) => {
     switch (type) {
         case "name":

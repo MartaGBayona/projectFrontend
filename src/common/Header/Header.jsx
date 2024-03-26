@@ -34,8 +34,12 @@ export const Header = () => {
     return (
         <div className={headerScroll ? "headerDesign scrolled" : "headerDesign"}>
             <CustomLink
-                title={"Home"}
+                title={"InkSoul"}
                 destination={"/"}
+            />
+                        <CustomLink
+                title={"Servicios"}
+                destination={"/services"}
             />
             {passport?.token
                     ? (<div className="authMenu">
@@ -44,7 +48,7 @@ export const Header = () => {
                             destination={"/profile"}
                         />
                         <CustomLink
-                            title="Log-out"
+                            title="Cerrar sesión"
                             destination="/"
                         />
                         <div onClick={logOut}>
@@ -54,11 +58,11 @@ export const Header = () => {
                     </div>
                     ): (<div className="authMenu">
                         <CustomLink
-                            title={"Login"}
+                            title={"Cuenta"}
                             destination={"/login"}
                         />
                         <CustomLink
-                            title={"Register"}
+                            title={"Registro"}
                             destination={"/register"}
                         />
                     </div>)
