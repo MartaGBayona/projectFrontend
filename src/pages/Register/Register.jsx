@@ -29,21 +29,19 @@ export const Register = () => {
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
-            [e.target.firstName]: e.target.value,
-            [e.target.secondName]: e.target.value
+            [e.target.name]: e.target.value,
         }));
     };
 
     const checkError = (e) => {
-        const errorFirstName = validate(e.target.firstName, e.target.value);
-        const errorSecondName = validate(e.target.secondName, e.target.value)
+        const error = validate(e.target.name, e.target.value);
 
         
 
         setUserError((prevState) => ({
             ...prevState,
-            [e.target.firstName + "Error"]: errorFirstName,
-            [e.target.secondName + "Error"]: errorSecondName
+            [e.target.name + "Error"]: error,
+
         }));
     };
 
@@ -78,7 +76,7 @@ export const Register = () => {
                     type={"text"}
                     placeholder={"nombre"}
                     name={"firstName"}
-                    value={user.name || ""}
+                    value={user.firstName || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                 />
@@ -87,9 +85,9 @@ export const Register = () => {
                     className={`inputDesign ${userError.errorSecondName !== "" ? "inputDesignError" : ""
                         }`}
                     type={"text"}
-                    placeholder={"Apellido"}
+                    placeholder={"apellido"}
                     name={"secondName"}
-                    value={user.name || ""}
+                    value={user.secondName || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                 />
