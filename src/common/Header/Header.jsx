@@ -47,12 +47,8 @@ export const Header = () => {
                             title={passport?.decoded?.name}
                             destination={"/profile"}
                         />
-                        <CustomLink
-                            title="Cerrar sesión"
-                            destination="/"
-                        />
                         <div onClick={logOut}>
-                            <CustomLink title={"cerrar sesión"}
+                            <CustomLink title={"Cerrar sesión"}
                             destination={"/"} />
                         </div>
                     </div>
