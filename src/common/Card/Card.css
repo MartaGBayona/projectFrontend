@@ -1,11 +1,10 @@
 .cardDesign {
 
-    height: 10em;
-    width: 14em;
+    height: 20em;
+    width: 35em;
 
-    border-radius: 0.5em;
-
-    background-color: cadetblue;
+    background-color: rgb(49, 47, 47);
+    border: 0.2em solid rgb(220, 160, 80);
 
     transition: 0.5s;
 
@@ -13,24 +12,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    margin: 2em;
+    padding: 1em;
+
+    font-family: "Josefin Sans", sans-serif;
+
 }
 
 .cardDesign:hover{
     transition: 0.5s;
 
-    background-color: pink;
     cursor: pointer;
-}
-
-.avatarDesign {
-    height: 8em;
-
-    width: 6em;
-}
-
-.cardsRoster {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
+    transform: scale(1.05);
 }

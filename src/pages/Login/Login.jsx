@@ -84,6 +84,9 @@ export const Login = () => {
         <>
             <Header />
             <div className="loginDesign">
+            <div className="titleDesign">
+                    Acceso a usuarios
+                </div>
                 <CustomInput
                     className={`inputDesign ${
                         credencialesError.emailError !== "" ? "inputDesignError" : ""

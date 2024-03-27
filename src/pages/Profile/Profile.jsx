@@ -7,7 +7,6 @@ import { CustomInput } from "../../common/Custominput/Custominput";
 import "./Profile.css"
 import { Header } from "../../common/Header/Header"
 import { validate } from "../../utils/functions";
-import { GetAppointment, UpdateAppointment } from "../../services/apiCalls";
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -69,24 +68,30 @@ export const Profile = () => {
         if (!loadedData) {
             getUserProfile();
         }
-    },[user]);
+    }, [user]);
 
     const updateData = async () => {
         try {
             const fetched = await UpdateProfile(tokenStorage, user);
-    
+
             setUser((prevState) => ({
                 ...prevState,
                 firstName: fetched.data.firstName || prevState.firstName,
                 secondName: fetched.data.secondName || prevState.secondName,
                 email: fetched.data.email || prevState.email,
             }));
-    
+
             setWrite("disabled");
         } catch (error) {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        if (!tokenStorage) {
+            navigate("/")
+        }
+    }, [tokenStorage, navigate])
 
     return (
         <>

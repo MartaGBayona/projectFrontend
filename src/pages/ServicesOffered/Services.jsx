@@ -30,16 +30,18 @@ export const Services = () => {
         <>
         <Header />
         <div className="servicesDesign">
+        <div className="titleDesign">
+                    Nuestros Servicios
+                </div>
         {services.length > 0 ? (
                 <div className="cardsRoster">{
-
-                    services.slice(0,10).map(
+                    services.map(
                         service => {
                             return (
                                 <Card
                                     key={service.id}
-                                    name={service.name}
-                                    description={service.description}
+                                    name={<span className="serviceName">{service.name}</span>}
+                                    description={<span className="serviceDescription">{service.description}</span>}
                                     clickFunction={() => clickedService(service)}
                                 />
                             )

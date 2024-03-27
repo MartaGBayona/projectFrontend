@@ -13,13 +13,6 @@
     overflow-x: hidden;
 }
 
-.titleDesign {
-    font-weight: bold;
-    font-size: xxx-large;
-
-    margin-top: 1em;
-}
-
 .contentDesign {
     font-family: "Josefin Sans", sans-serif;
     text-align: left;
@@ -28,8 +21,6 @@
     margin-left: 3em;
     margin-right: 2em;
 }
-
-
 
 .descriptionTitleDesign {
     font-weight: bold;
@@ -40,5 +31,20 @@
 
 .descriptionDesign {
     font-size: large;
+    margin-top: 1em;
+}
+
+.titleDesign {
+    width: 100%;
+    display: block;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.titleDesign {
+    font-size: 9em;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
     margin-top: 1em;
 }

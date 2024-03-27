@@ -69,6 +69,9 @@ export const Register = () => {
         <>
         <Header />
         <div className="registerDesign">
+        <div className="titleDesign">
+                    Regístrate
+                </div>
             <CustomInput
                 className={`inputDesign ${userError.firstNameError ? "inputDesignError" : ""}`}
                 type={"text"}

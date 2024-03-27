@@ -93,13 +93,12 @@ export const UpdateProfile = async (token, data) => {
     }
 }; 
 
-    export const GetServices = async (services) => {
+    export const GetServices = async () => {
         const options = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(services)
         };
 
         try {
@@ -111,21 +110,22 @@ export const UpdateProfile = async (token, data) => {
                 throw new Error(data.message);
             }
 
-            return data;
+            const servicesData = data.data;
+
+            return servicesData;
         } catch (error) {
             return error;
         }
     }
 
 
-    export const GetAppointment = async (token, appointments) => {
+    export const GetAppointment = async (token,) => {
         const options = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(appointments)
         };
         try {
             const response = await fetch(`${root}appointments`, options);
