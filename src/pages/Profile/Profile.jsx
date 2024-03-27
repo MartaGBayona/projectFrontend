@@ -68,24 +68,24 @@ export const Profile = () => {
         if (!loadedData) {
             getUserProfile();
         }
-    }, [user]);
+    },[user]);
 
     const updateData = async () => {
-
         try {
-            const fetched = await UpdateProfile(tokenStorage, user)
-
-            setUser({
-                firstName: fetched.data.firstName,
-                secondName: fetched.data.secondName,
-                email: fetched.data.email
-            })
-
-            setWrite("disabled")
+            const fetched = await UpdateProfile(tokenStorage, user);
+    
+            setUser((prevState) => ({
+                ...prevState,
+                firstName: fetched.data.firstName || prevState.firstName,
+                secondName: fetched.data.secondName || prevState.secondName,
+                email: fetched.data.email || prevState.email,
+            }));
+    
+            setWrite("disabled");
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     return (
         <>
@@ -94,9 +94,9 @@ export const Profile = () => {
                 {!loadedData ? (
                     <div>CARGANDO</div>
                 ) : (
-                    <div>
+                    <div className="profileDesign">
                         <CustomInput
-                            className={`inputDesign ${userError.nameError !== "" ? "inputDesignError" : ""
+                            className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
                                 }`}
                             type={"text"}
                             placeholder={""}
@@ -107,12 +107,12 @@ export const Profile = () => {
                             onBlurFunction={(e) => checkError(e)}
                         />
                         <CustomInput
-                            className={`inputDesign ${userError.surnameError !== "" ? "inputDesignError" : ""
+                            className={`inputDesign ${userError.secondNameError !== "" ? "inputDesignError" : ""
                                 }`}
                             type={"text"}
                             placeholder={""}
                             name={"secondName"}
-                            disabled={write}
+                            disabled={"disabled"}
                             value={user.secondName || ""}
                             onChangeFunction={(e) => inputHandler(e)}
                             onBlurFunction={(e) => checkError(e)}
@@ -129,8 +129,8 @@ export const Profile = () => {
                             onBlurFunction={(e) => checkError(e)}
                         />
                         <CustomButton
-                            className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
-                            title={write === "" ? "Confirm" : "Edit"}
+                            className={write === "" ? "buttonDesign" : "buttonDesign"}
+                            title={write === "" ? "Confirmar" : "Editar"}
                             functionEmit={write === "" ? updateData : () => setWrite("")}
                         />
                     </div>

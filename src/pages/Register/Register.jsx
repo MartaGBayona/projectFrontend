@@ -115,7 +115,7 @@ export const Register = () => {
 
             <CustomButton
                 className={"buttonDesign"}
-                title={"Register"}
+                title={"Registro"}
                 functionEmit={registerMe}
             />
             <div className="error">{msgError}</div>
