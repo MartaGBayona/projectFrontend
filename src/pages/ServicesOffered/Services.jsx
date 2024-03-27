@@ -33,13 +33,13 @@ export const Services = () => {
         {services.length > 0 ? (
                 <div className="cardsRoster">{
 
-                    services.map(
+                    services.slice(0,10).map(
                         service => {
                             return (
                                 <Card
                                     key={service.id}
                                     name={service.name}
-                                    description={service.species}
+                                    description={service.description}
                                     clickFunction={() => clickedService(service)}
                                 />
                             )

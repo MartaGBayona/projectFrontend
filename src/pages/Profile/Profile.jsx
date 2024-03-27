@@ -7,6 +7,7 @@ import { CustomInput } from "../../common/Custominput/Custominput";
 import "./Profile.css"
 import { Header } from "../../common/Header/Header"
 import { validate } from "../../utils/functions";
+import { GetAppointment, UpdateAppointment } from "../../services/apiCalls";
 
 export const Profile = () => {
     const navigate = useNavigate();

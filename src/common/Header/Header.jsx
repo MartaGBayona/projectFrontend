@@ -44,7 +44,7 @@ export const Header = () => {
             {passport?.token
                     ? (<div className="authMenu">
                         <CustomLink
-                            title={passport?.decoded?.name}
+                            title={passport?.decoded?.firstName}
                             destination={"/profile"}
                         />
                         <div onClick={logOut}>

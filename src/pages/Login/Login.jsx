@@ -64,11 +64,12 @@ export const Login = () => {
                 token: fetched.token,
                 decoded: decoded,
             };
+            console.log(decoded)
 
             localStorage.setItem("passport", JSON.stringify(passport));
 
             setMsgError(
-                `Bienvenido de nuevo ${decoded.name}`
+                `Bienvenido de nuevo ${decoded.firstName}`
             );
 
             setTimeout(() => {
