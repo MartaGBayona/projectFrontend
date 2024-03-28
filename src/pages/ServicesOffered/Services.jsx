@@ -47,7 +47,6 @@ export const Services = () => {
                             )
                         }
                     )
-
                 }</div>
             ) : (
                 <div>Los servicios están viniendo.</div>

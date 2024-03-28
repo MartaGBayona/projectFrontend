@@ -11,8 +11,12 @@ export const Appointment = () => {
     
     const navigate = useNavigate();
     const dataAppointment = JSON.parse(localStorage.getItem("passport"));
+    const [tokenStorage, setTokenStorage] = useState(dataAppointment?.token);
+    const [loadedData, setLoadedData] = useState(false);
+    const [write, setWrite] = useState("disabled");
 
     const [appointment, setAppointment] = useState({
+        id: "",  // Asegúrate de que appointment tenga un campo id
         appointmentDate: "",
         service: "",
     });
@@ -22,38 +26,76 @@ export const Appointment = () => {
         serviceError: "",
     });
 
+    const inputHandler = (e) => {
+        setAppointment((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const checkError = (e) => {
+        const error = validate(e.target.name, e.target.value);
+        setAppointmentError((prevState) => ({
+            ...prevState,
+            [e.target.name + "Error"]: error
+        }))
+    }
+
+
     useEffect(() => {
         const getUserAppointment = async () => {
             try {
                 const fetched = await GetAppointment(tokenStorage);
-
+    
+                console.log("Respuesta del backend:", fetched);  // Depuración para verificar la respuesta del backend
+    
                 setLoadedData(true);
-
-                setAppointment({
-                    appointmentDate: fetched.data.appointmentDate,
-                    service: fetched.data.service,
-
-                });
+    
+                if (fetched && fetched.data && fetched.data.length > 0) {
+                    // Seleccionar la primera cita del array data por defecto
+                    const firstAppointment = fetched.data[0];
+    
+                    if (firstAppointment && firstAppointment.id) {
+                        setAppointment({
+                            ...appointment,
+                            id: firstAppointment.id,
+                            appointmentDate: firstAppointment.appointmentDate,
+                            service: firstAppointment.service.name,
+                        });
+                    } else {
+                        throw new Error("El ID del appointment es inválido");
+                    }
+                } else {
+                    throw new Error("No se pudo obtener el ID del appointment");
+                }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         };
-
+    
         if (!loadedData) {
             getUserAppointment();
         }
-    }, [appointment]);
-
-    const UpdateAppointment = async () => {
+    }, [tokenStorage, loadedData]);
+    
+    const updateAppointment = async () => {
         try {
-            const fetched = await UpdateAppointment(tokenStorage, user);
-
+            // Verificar el valor del ID justo antes de actualizar
+            console.log("ID del appointment:", appointment.id);
+    
+            // Asegúrate de que appointment tenga un campo id válido
+            if (!appointment.id || appointment.id === "") {
+                throw new Error("El ID del appointment es inválido");
+            }
+    
+            const fetched = await UpdateAppointment(tokenStorage, appointment);
+    
             setAppointmentError((prevState) => ({
                 ...prevState,
-                appointmentDate: fetched.data.appointmentDate || prevState.appointmentDate,
-                service: fetched.data.service || prevState.sservice,
+                appointmentDate: fetched.appointmentDate || prevState.appointmentDate,
+                service: fetched.service || prevState.service,
             }));
-
+    
             setWrite("disabled");
         } catch (error) {
             console.log(error);
@@ -76,7 +118,7 @@ export const Appointment = () => {
                             placeholder={""}
                             name={"appointmentDate"}
                             disabled={write}
-                            value={user.appointmentDate || ""}
+                            value={appointment.appointmentDate || ""}
                             onChangeFunction={(e) => inputHandler(e)}
                             onBlurFunction={(e) => checkError(e)}
                         />
@@ -88,7 +130,7 @@ export const Appointment = () => {
                             placeholder={""}
                             name={"service"}
                             disabled={write}
-                            value={user.appointmentDate || ""}
+                            value={appointment.service || ""}
                             onChangeFunction={(e) => inputHandler(e)}
                             onBlurFunction={(e) => checkError(e)}
                         />
@@ -96,7 +138,7 @@ export const Appointment = () => {
                         <CustomButton
                             className={write === "" ? "buttonDesign" : "buttonDesign"}
                             title={write === "" ? "Confirmar" : "Editar"}
-                            functionEmit={write === "" ? UpdateAppointment : () => setWrite("")}
+                            functionEmit={write === "" ? updateAppointment : () => setWrite("")}
                         />
                     </div>
                 )}

@@ -119,7 +119,7 @@ export const UpdateProfile = async (token, data) => {
     }
 
 
-    export const GetAppointment = async (token,) => {
+    export const GetAppointment = async (token) => {
         const options = {
             method: "GET",
             headers: {
@@ -129,20 +129,19 @@ export const UpdateProfile = async (token, data) => {
         };
         try {
             const response = await fetch(`${root}appointments`, options);
-
             const data = await response.json();
-
-            if(!data.success) {
-                throw new Error(data.message)
+    
+            if (!data.success) {
+                throw new Error(data.message);
             }
     
             return data;
-
+    
         } catch (error) {
             return error;
         }
     }
-
+    
     export const UpdateAppointment = async (token, data) => {
         const options = {
             method: "PUT",
@@ -154,15 +153,15 @@ export const UpdateProfile = async (token, data) => {
         };
     
         try {
-            const response = await fetch(`${root}appointments/:id`, options);
-            const data = await response.json();
+            const response = await fetch(`${root}appointments/${data.id}`, options);
+            const responseData = await response.json();
     
-            if(!data.success) {
-                throw new Error(data.message)
+            if (!responseData.success) {
+                throw new Error(responseData.message);
             }
     
-            return data;
+            return responseData;
         } catch (error) {
             return error;
         }
-    }; 
+    };

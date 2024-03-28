@@ -24,6 +24,7 @@ export const Header = () => {
             window.removeEventListener("scroll", handleScroll)
         };
     }, []);
+    
 
 
     const logOut =() => {
