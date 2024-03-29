@@ -9,9 +9,29 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    overflow-x: hidden;
 }
 
 .error {
     height: 1em;
     color: red;
+}
+
+.userFirstName {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+
+    line-height: 3;
+}
+
+.userSecondName {
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+}
+
+.userEmail {
+    font-size: 1em;
+    color: rgb(255, 255, 255);
 }

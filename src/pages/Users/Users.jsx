@@ -2,7 +2,7 @@ import "./Users.css";
 import { useState, useEffect } from "react";
 import { Header } from "../../common/Header/Header";
 import { GetUsers } from "../../services/apiCalls";
-import { Card } from "../../common/Card/Card";
+import { UserCard } from "../../common/Card/Card";
 
 export const Users = () => {
     const passport = JSON.parse(localStorage.getItem("passport"));
@@ -25,6 +25,18 @@ export const Users = () => {
         }
     }, [users]);
 
+    const handleDelete = async (userId) => {
+        try {
+            await deleteUser(passport.token, userId); // Asume que tienes una función deleteUser en tus servicios
+            const updatedUsers = users.filter(user => user.id !== userId);
+            setUsers(updatedUsers);
+        } catch (error) {
+            setErrorMsg("Error al eliminar el usuario: " + error.message);
+        }
+    };
+
+    
+
     return (
         <>
             <Header />
@@ -34,15 +46,22 @@ export const Users = () => {
                 </div>
                 {users.length > 0 ? (
                     <div className="cardsRoster">
-                        {users.map(user => (
-                            <Card
+                        {users.map(user => {
+                            console.log(user);
+                            return (
+                                <UserCard
                                 key={user.id}
-                                firstName={<span>{user.firstName}</span>}
-                                secondName={<span>{user.secondName}</span>}
-                                email={<span>{user.email}</span>}
-                                //clickFunction={() => clickedService(service)}
+                                firstName={<span className="userFirstName">Nombre: {user.firstName}</span>}
+                                secondName={<span className="userSecondName">Apellido: {user.secondName}</span>}
+                                email={<span className="userEmail">Correo: {user.email}</span>}
+                                onDelete={() => handleDelete(user.id)}
+                                isDeletable={user.id !== 1}
                             />
-                        ))}
+                            )
+                            
+                        }
+
+                        )}
                     </div>
                 ) : (
                     <div>{errorMsg || "Los usuarios están viniendo."}</div>

@@ -198,20 +198,19 @@ export const UpdateProfile = async (token, data) => {
                 "Authorization": `Bearer ${token}`
             },
         };
-
+    
         try {
             const response = await fetch(`${root}users`, options);
-
             const data = await response.json();
-
+    
             if (!data.success) {
                 throw new Error(data.message);
             }
-
+    
             const servicesData = data.data;
-
             return servicesData;
         } catch (error) {
-            return error;
+            throw new Error(error);
         }
     }
+    
