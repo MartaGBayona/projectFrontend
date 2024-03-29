@@ -1,7 +1,7 @@
 import "./Users.css";
 import { useState, useEffect } from "react";
 import { Header } from "../../common/Header/Header";
-import { GetUsers } from "../../services/apiCalls";
+import { GetUsers,DeleteUser } from "../../services/apiCalls";
 import { UserCard } from "../../common/Card/Card";
 
 export const Users = () => {
@@ -27,7 +27,17 @@ export const Users = () => {
 
     const handleDelete = async (userId) => {
         try {
-            await deleteUser(passport.token, userId); // Asume que tienes una función deleteUser en tus servicios
+            if (userId === 1) {
+                setErrorMsg("Super Admin cannot be deleted");
+                return;
+            }
+    
+            const response = await DeleteUser(passport.token, { id: userId });
+            
+            if (!response.success) {
+                throw new Error(response.message || "Error al eliminar el usuario");
+            }
+    
             const updatedUsers = users.filter(user => user.id !== userId);
             setUsers(updatedUsers);
         } catch (error) {
