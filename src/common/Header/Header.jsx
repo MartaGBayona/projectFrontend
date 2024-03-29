@@ -32,41 +32,48 @@ export const Header = () => {
         navigate("/login")
     }
 
+    const userRole = passport?.decoded?.name || "unknown";
+
+    console.log("Rol del usuario:", userRole);
+
     return (
         <div className={headerScroll ? "headerDesign scrolled" : "headerDesign"}>
             <CustomLink
                 title={"InkSoul"}
                 destination={"/"}
             />
-                        <CustomLink
+            <CustomLink
                 title={"Servicios"}
                 destination={"/services"}
             />
+            
             {passport?.token
-                    ? (<div className="authMenu">
+                ? (
+                    <div className="authMenu">
                         <CustomLink
                             title={passport?.decoded?.firstName}
                             destination={"/profile"}
                         />
                         <div>
-                        <CustomLink title={"Mis citas"}
-                            destination={"/appointments"} />
+                            <CustomLink title={"Mis citas"} destination={"/appointments"} />
                         </div>
+                        {/* Condición para mostrar el enlace a la sección de usuarios */}
+                        {passport?.decoded?.name === 'super_admin' && (
+                            <div>
+                                <CustomLink title={"Usuarios"} destination={"/users"} />
+                            </div>
+                        )}
                         <div onClick={logOut}>
-                            <CustomLink title={"Cerrar sesión"}
-                            destination={"/"} />
+                            <CustomLink title={"Cerrar sesión"} destination={"/"} />
                         </div>
                     </div>
-                    ): (<div className="authMenu">
-                        <CustomLink
-                            title={"Cuenta"}
-                            destination={"/login"}
-                        />
-                        <CustomLink
-                            title={"Registro"}
-                            destination={"/register"}
-                        />
-                    </div>)
+                )
+                : (
+                    <div className="authMenu">
+                        <CustomLink title={"Cuenta"} destination={"/login"} />
+                        <CustomLink title={"Registro"} destination={"/register"} />
+                    </div>
+                )
             }
         </div>
     )

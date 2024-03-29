@@ -1,57 +1,72 @@
 import "./Appointments.css";
 import { useState, useEffect } from "react";
 import { Header } from "../../common/Header/Header";
-import { GetAppointment, UpdateAppointment } from "../../services/apiCalls";
+import { GetAppointment, UpdateAppointment, DeleteAppointment } from "../../services/apiCalls";
 import { CustomButton } from "../../common/customButton/customButton";
-import dayjs from "dayjs";
 import { CustomInput } from "../../common/Custominput/Custominput";
+import dayjs from 'dayjs';
 
 export const Appointment = () => {
-    
+
     const dataUser = JSON.parse(localStorage.getItem("passport"));
     const [tokenStorage, setTokenStorage] = useState(dataUser?.token);
     const [loadedData, setLoadedData] = useState(false);
     const [appointments, setAppointments] = useState([]);
-    const [editIndex, setEditIndex] = useState(null);
 
     useEffect(() => {
         const getUserAppointment = async () => {
             try {
+                console.log("Obteniendo citas con token:", tokenStorage);
+                
                 const fetched = await GetAppointment(tokenStorage);
-                setAppointments(fetched.data);
+                
+                console.log("Datos obtenidos:", fetched);
+
+                const formattedAppointments = fetched.data.map((appointment, index) => {
+                    console.log("Appointment:", appointment);
+                    console.log("Index:", index);
+                    return {
+                        ...appointment,
+                        id: appointment.id || index,
+                    };
+                });
+
+                setAppointments(formattedAppointments);
                 setLoadedData(true);
             } catch (error) {
-                console.log(error);
+                console.log("Error al obtener citas:", error);
             }
         };
-    
+
         if (!loadedData) {
             getUserAppointment();
         }
     }, [tokenStorage, loadedData]);
-    
-    const updateAppointment = async (appointmentToUpdate) => {
-        try {
-            console.log("ID del appointment:", appointmentToUpdate.id);
-    
-            if (!appointmentToUpdate.id || appointmentToUpdate.id === "") {
-                throw new Error("El ID del appointment es inválido");
-            }
-    
-            const fetched = await UpdateAppointment(tokenStorage, appointmentToUpdate);
-    
-            console.log("Respuesta del backend:", fetched);
-    
-            setLoadedData(false); 
-            setEditIndex(null);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
-    const handleEdit = (index) => {
-        setEditIndex(index);
-    };
+    const deleteAppointment = async (appointmentId) => {
+    try {
+        console.log("ID del appointment a eliminar:", appointmentId);
+
+        if (appointmentId === null || appointmentId === undefined || appointmentId === "") {
+            throw new Error("El ID del appointment es inválido");
+        }
+
+        const result = await DeleteAppointment(tokenStorage, { id: appointmentId });
+
+        if (result.success) {
+            console.log("Cita eliminada con éxito");
+
+            setLoadedData(false);
+        } else {
+            throw new Error(result.message || 'Error deleting appointment');
+        }
+
+    } catch (error) {
+        console.log("Error al eliminar la cita:", error);
+    }
+};
+
+    console.log("IDs de citas:", appointments.map(appointment => appointment.id));
 
     return (
         <>
@@ -59,53 +74,27 @@ export const Appointment = () => {
             <div className="appointmentDesign">
                 <div>
                     {
-                        loadedData && appointments.length > 0 
-                        ? (appointments.map((appointment, index) => {
-                             return (
+                        loadedData && appointments.length > 0
+                            ? (appointments.map((appointment) => {
+                                return (
                                     <div key={appointment.id} className='appointStyle'>
                                         <div>
-                                            Servicio: 
-                                            {editIndex === index ? (
-                                                <CustomInput
-                                                className="inputDesign "
-                                                    type="text"
-                                                    value={appointment.service.name}
-                                                    onChangeFunction={(e) => {
-                                                        const updatedAppointments = [...appointments];
-                                                        updatedAppointments[index].service.name = e.target.value;
-                                                        setAppointments(updatedAppointments);
-                                                    }}
-                                                />
-                                            ) : (
-                                                appointment.service.name
-                                            )}
+                                            Servicio: {appointment.service.name}
                                         </div>
                                         <div>
-                                            Fecha: 
-                                            {editIndex === index ? (
-                                                <CustomInput
-                                                className="inputDesign "
-                                                    type="date"
-                                                    value={dayjs(appointment.appointment_date).format('YYYY-MM-DD')}
-                                                    onChangeFunction={(e) => {
-                                                        const updatedAppointments = [...appointments];
-                                                        updatedAppointments[index].appointment_date = dayjs(e.target.value).toISOString();
-                                                        setAppointments(updatedAppointments);
-                                                    }}
-                                                />
-                                            ) : (
-                                                dayjs(appointment.appointment_date).format('DD/MM/YYYY')
-                                            )}
+                                            Fecha: {dayjs(appointment.appointment_date).format('DD/MM/YYYY')}
                                         </div>
                                         <CustomButton
                                             className="buttonDesign"
-                                            title={editIndex === index ? "Confirmar" : "Editar"}
-                                            functionEmit={editIndex === index ? () => updateAppointment(appointment) : () => handleEdit(index)}
+                                            title="Eliminar"
+                                            functionEmit={() => {
+                                                deleteAppointment(appointment.id);
+                                            }}
                                         />
                                     </div>
                                 )
                             })
-                        ): ("null")
+                            ) : ("null")
                     }
                 </div>
             </div>

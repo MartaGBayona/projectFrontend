@@ -165,3 +165,53 @@ export const UpdateProfile = async (token, data) => {
             return error;
         }
     };
+
+    export const DeleteAppointment = async (token, data) => {
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        };
+    
+        try {
+            const response = await fetch(`${root}appointments/${data.id}`, options);
+            const responseData = await response.json();
+    
+            if (!responseData.success) {
+                throw new Error(responseData.message);
+            }
+    
+            return responseData;
+        } catch (error) {
+            return error;
+        }
+    };
+
+    export const GetUsers = async (token) => {
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        };
+
+        try {
+            const response = await fetch(`${root}users`, options);
+
+            const data = await response.json();
+
+            if (!data.success) {
+                throw new Error(data.message);
+            }
+
+            const servicesData = data.data;
+
+            return servicesData;
+        } catch (error) {
+            return error;
+        }
+    }
