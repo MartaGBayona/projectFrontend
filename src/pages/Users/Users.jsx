@@ -1,48 +1,55 @@
 import "./Users.css";
 import { useState, useEffect } from "react";
 import { Header } from "../../common/Header/Header";
+import { GetUsers } from "../../services/apiCalls";
+import { Card } from "../../common/Card/Card";
 
 export const Users = () => {
+    const passport = JSON.parse(localStorage.getItem("passport"));
     const [users, setUsers] = useState([]);
     const [errorMsg, setErrorMsg] = useState("");
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const data = await GetUsers();  // Aquí llamamos a la función GetUsers
-                setUsers(data);
-            } catch (error) {
-                setErrorMsg("Error al obtener usuarios");
-            }
-        };
+        if (users.length === 0) {
+            const BringData = async () => {
+                try {
+                    const fetched = await GetUsers(passport.token);
+                    console.log("Datos de usuarios:", fetched);
+                    setUsers(fetched);
+                } catch (error) {
+                    setErrorMsg("Error al obtener usuarios: " + error.message);
+                }
+            };
 
-        fetchUsers();
-    }, []);
+            BringData();
+        }
+    }, [users]);
 
     return (
         <>
             <Header />
-            <div className="loginDesign">
+            <div className="userDesign">
                 <div className="titleDesign">
-                    Acceso a usuarios
+                    Lista de Usuarios
                 </div>
-
-                {/* Renderizar la lista de usuarios */}
-                <div className="userList">
-                    {users.map((user, index) => (
-                        <div key={index} className="userItem">
-                            <div>ID: {user.id}</div>
-                            <div>Email: {user.email}</div>
-                            <div>First Name: {user.firstName}</div>
-                            <div>Second Name: {user.secondName}</div>
-                            <div>Role: {user.role.name}</div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="error">{errorMsg}</div>
+                {users.length > 0 ? (
+                    <div className="cardsRoster">
+                        {users.map(user => (
+                            <Card
+                                key={user.id}
+                                firstName={<span>{user.firstName}</span>}
+                                secondName={<span>{user.secondName}</span>}
+                                email={<span>{user.email}</span>}
+                                //clickFunction={() => clickedService(service)}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div>{errorMsg || "Los usuarios están viniendo."}</div>
+                )}
             </div>
         </>
     );
 }
+
 
