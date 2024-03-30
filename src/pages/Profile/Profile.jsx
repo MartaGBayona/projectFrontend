@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { GetProfile, UpdateProfile } from "../../services/apiCalls";
 import { CustomButton } from "../../common/customButton/customButton";
 import { CustomInput } from "../../common/Custominput/Custominput";
-//import dayjs from "dayjs";
 import "./Profile.css"
 import { Header } from "../../common/Header/Header"
 import { validate } from "../../utils/functions";
@@ -13,6 +12,7 @@ export const Profile = () => {
     const dataUser = JSON.parse(localStorage.getItem("passport"));
 
     const [write, setWrite] = useState("disabled");
+    // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(dataUser?.token);
     const [loadedData, setLoadedData] = useState(false);
     const [user, setUser] = useState({
@@ -101,6 +101,9 @@ export const Profile = () => {
                     <div>CARGANDO</div>
                 ) : (
                     <div className="profileDesign">
+                    <div className="titleDesign">
+                    Bienvenido a tu Perfil
+                </div>
                         <CustomInput
                             className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
                                 }`}

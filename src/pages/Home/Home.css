@@ -10,7 +10,6 @@
     justify-content: flex-start;
     align-items: center;
 
-    overflow-x: hidden;
 }
 
 .contentDesign {
@@ -37,14 +36,9 @@
 .titleDesign {
     width: 100%;
     display: block;
-    justify-content: center;
-    margin-top: 3em;
-}
-
-.titleDesign {
-    font-size: 9em;
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+    justify-content: flex-start;
 
     margin-top: 1em;
+    font-size: 9em;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

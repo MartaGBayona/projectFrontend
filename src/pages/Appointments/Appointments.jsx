@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 export const Appointment = () => {
 
     const dataUser = JSON.parse(localStorage.getItem("passport"));
+    // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(dataUser?.token);
     const [loadedData, setLoadedData] = useState(false);
     const [appointments, setAppointments] = useState([]);
@@ -57,6 +58,8 @@ export const Appointment = () => {
             console.log("Cita eliminada con éxito");
 
             setLoadedData(false);
+            window.location.reload();
+
         } else {
             throw new Error(result.message || 'Error deleting appointment');
         }
@@ -72,6 +75,9 @@ export const Appointment = () => {
         <>
             <Header />
             <div className="appointmentDesign">
+            <div className="titleDesign">
+                    Mis citas
+                </div>
                 <div>
                     {
                         loadedData && appointments.length > 0

@@ -14,6 +14,7 @@ import "./Login.css"
 export const Login = () => {
     const userData = JSON.parse(localStorage.getItem("passport"));
     const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(userData?.token);
 
     const [credenciales, setCredenciales] = useState({
@@ -65,7 +66,6 @@ export const Login = () => {
                 token: fetched.token,
                 decoded: decoded,
             };
-            console.log(decoded)
 
             localStorage.setItem("passport", JSON.stringify(passport));
 

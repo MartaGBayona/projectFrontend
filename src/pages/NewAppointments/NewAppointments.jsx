@@ -50,10 +50,12 @@ const NewAppointment = () => {
     return (
         <div>
             <Header />
-            <h2>Create Appointment</h2>
+            <div className='newAppointmentDesign'>
+            <div className='titleDesign'>
+            Solicita tu cita</div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Appointment Date:</label>
+                    <>Selecciona fecha y hora</>
                     <input
                         type="datetime-local"
                         name='appointmentDate'
@@ -62,17 +64,8 @@ const NewAppointment = () => {
                         required
                     />
                 </div>
-                {/* <div>
-                    <label>User:</label>
-                    <input
-                        type="text"
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
-                        required
-                    />
-                </div> */}
                 <div>
-                    <label>Service:</label>
+                    <>Selecciona un servicio</>
                     <input
                         type="text"
                         name='service'
@@ -81,9 +74,12 @@ const NewAppointment = () => {
                         required
                     />
                 </div>
-                <button type="submit">Create Appointment</button>
+                <button 
+                className='buttonDesign'
+                type="submit">Solicitar cita</button>
             </form>
             {message && <p>{message}</p>}
+            </div>
         </div>
     );
 };
