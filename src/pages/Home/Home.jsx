@@ -1,6 +1,5 @@
 import "./Home.css"
 import { Header } from "../../common/Header/Header"
-import { Footer } from "../../common/Footer/Footer"
 
 export const Home = () => {
     return (
@@ -33,8 +32,6 @@ export const Home = () => {
                 </div>
 
             </div>
-            <Footer />
-                <div className="footerDesign"></div>
         </>
     )
 }

@@ -57,7 +57,6 @@ export const Users = () => {
                 {users.length > 0 ? (
                     <div className="cardsRoster">
                         {users.map(user => {
-                            console.log(user);
                             return (
                                 <UserCard
                                 key={user.id}

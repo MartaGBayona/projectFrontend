@@ -99,6 +99,7 @@ export const UpdateProfile = async (token, data) => {
             headers: {
                 "Content-Type": "application/json",
             },
+            
         };
 
         try {
@@ -142,29 +143,29 @@ export const UpdateProfile = async (token, data) => {
         }
     }
     
-    export const UpdateAppointment = async (token, data) => {
-        const options = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(data)
-        };
+    // export const UpdateAppointment = async (token, data) => {
+    //     const options = {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Bearer ${token}`
+    //         },
+    //         body: JSON.stringify(data)
+    //     };
     
-        try {
-            const response = await fetch(`${root}appointments/${data.id}`, options);
-            const responseData = await response.json();
+    //     try {
+    //         const response = await fetch(`${root}appointments/${data.id}`, options);
+    //         const responseData = await response.json();
     
-            if (!responseData.success) {
-                throw new Error(responseData.message);
-            }
+    //         if (!responseData.success) {
+    //             throw new Error(responseData.message);
+    //         }
     
-            return responseData;
-        } catch (error) {
-            return error;
-        }
-    };
+    //         return responseData;
+    //     } catch (error) {
+    //         return error;
+    //     }
+    // };
 
     export const DeleteAppointment = async (token, data) => {
         const options = {
@@ -173,11 +174,11 @@ export const UpdateProfile = async (token, data) => {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({"id":data})
         };
     
         try {
-            const response = await fetch(`${root}appointments/${data.id}`, options);
+            const response = await fetch(`${root}appointments`, options);
             const responseData = await response.json();
     
             if (!responseData.success) {
@@ -238,3 +239,26 @@ export const UpdateProfile = async (token, data) => {
         }
     };
     
+    export const CreateAppointment = async (token, data) => {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        };
+
+        try {
+            const response = await fetch(`${root}appointments`, options);
+            const responseData = await response.json();
+    
+            if (!responseData.success) {
+                throw new Error(responseData.message);
+            }
+    
+            return responseData;
+        } catch (error) {
+            return { success: false, message: error.message };
+        }
+    }

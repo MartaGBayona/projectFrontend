@@ -1,9 +1,8 @@
 import "./Appointments.css";
 import { useState, useEffect } from "react";
 import { Header } from "../../common/Header/Header";
-import { GetAppointment, UpdateAppointment, DeleteAppointment } from "../../services/apiCalls";
+import { GetAppointment,  DeleteAppointment } from "../../services/apiCalls";
 import { CustomButton } from "../../common/customButton/customButton";
-import { CustomInput } from "../../common/Custominput/Custominput";
 import dayjs from 'dayjs';
 
 export const Appointment = () => {
@@ -27,7 +26,7 @@ export const Appointment = () => {
                     console.log("Index:", index);
                     return {
                         ...appointment,
-                        id: appointment.id || index,
+                        id: appointment.id ,
                     };
                 });
 
@@ -50,8 +49,9 @@ export const Appointment = () => {
         if (appointmentId === null || appointmentId === undefined || appointmentId === "") {
             throw new Error("El ID del appointment es inválido");
         }
-
-        const result = await DeleteAppointment(tokenStorage, { id: appointmentId });
+        console.log(appointmentId)
+        console.log(tokenStorage)
+        const result = await DeleteAppointment(tokenStorage, appointmentId );
 
         if (result.success) {
             console.log("Cita eliminada con éxito");

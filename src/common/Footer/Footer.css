@@ -12,9 +12,6 @@
     justify-content: flex-end;
     align-items: flex-start;
 
-    padding-top: 3em;
-    padding-left: 3em;
-
-
+    overflow-x: hidden;
 
 }

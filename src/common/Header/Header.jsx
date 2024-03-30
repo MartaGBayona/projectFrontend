@@ -32,9 +32,6 @@ export const Header = () => {
         navigate("/login")
     }
 
-    const userRole = passport?.decoded?.name || "unknown";
-
-    console.log("Rol del usuario:", userRole);
 
     return (
         <div className={headerScroll ? "headerDesign scrolled" : "headerDesign"}>
@@ -57,7 +54,9 @@ export const Header = () => {
                         <div>
                             <CustomLink title={"Mis citas"} destination={"/appointments"} />
                         </div>
-                        {/* Condición para mostrar el enlace a la sección de usuarios */}
+                        <div>
+                            <CustomLink title={"Solicitar Cita"} destination={"/newappointments"} />
+                        </div>
                         {passport?.decoded?.name === 'super_admin' && (
                             <div>
                                 <CustomLink title={"Usuarios"} destination={"/users"} />
