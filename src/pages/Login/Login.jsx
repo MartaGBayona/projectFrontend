@@ -85,13 +85,12 @@ export const Login = () => {
         <>
             <Header />
             <div className="loginDesign">
-            <div className="titleDesign">
+                <div className="titleDesign">
                     Acceso a usuarios
                 </div>
                 <CustomInput
-                    className={`inputDesign ${
-                        credencialesError.emailError !== "" ? "inputDesignError" : ""
-                    }`}
+                    className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
+                        }`}
                     type={"email"}
                     placeholder={"email"}
                     name={"email"}
@@ -99,12 +98,12 @@ export const Login = () => {
                     value={credenciales.email || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
-                    
+
                 />
                 <div className="error">{credencialesError.emailError}</div>
                 <CustomInput
                     className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
-                    }`}
+                        }`}
                     type={"password"}
                     placeholder={"contraseña"}
                     name="password"
@@ -119,8 +118,8 @@ export const Login = () => {
                     className={"buttonDesign"}
                     title={"Acceso"}
                     functionEmit={LoginMe}
-                    />
-                    <div className="error">{msgError}</div>
+                />
+                <div className="error">{msgError}</div>
             </div>
         </>
     )
