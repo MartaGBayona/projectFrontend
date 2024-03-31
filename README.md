@@ -24,7 +24,7 @@ We carried out a frontend project for a potential tattoo and piercing shop. The 
 
 ## Stack :gear:
 
-![alt text](./img/imgREADME/image.png) ![alt text](./img/imgREADME/image-1.png) ![alt text](./img/imgREADME/image-2.png) ![alt text](./img/imgREADME/image-13.png) ![alt text](./img/imgREADME/image-4.png) ![ ](./img/imgREADME/image-5.png) ![alt text](./img/imgREADME/image-6.png) ![ ](./img/imgREADME/image-7.png) ![alt text](./img/imgREADME/image-8.png) ![alt text](./img/imgREADME/image-9.png) ![alt text](./img/imgREADME/image-10.png) ![alt text](./img/imgREADME/image-11.png) ![alt text](./img/imgREADME/image-12.png) ![alt text](./img/imgREADME/image-14.png) ![Static Badge](https://img.shields.io/badge/TYPEORM-darkred?style=for-the-badge&logo=TS)
+![alt text](./img/imgREADME/image.png) ![alt text](./img/imgREADME/image-1.png) ![alt text](./img/imgREADME/imageMysql.png)![alt text](./img/imgREADME/image-2.png) ![alt text](./img/imgREADME/image-13.png) ![alt text](./img/imgREADME/image-4.png) ![ ](./img/imgREADME/image-5.png) ![alt text](./img/imgREADME/image-6.png) ![ ](./img/imgREADME/image-7.png) ![alt text](./img/imgREADME/image-8.png) ![alt text](./img/imgREADME/image-9.png) ![alt text](./img/imgREADME/image-10.png) ![alt text](./img/imgREADME/image-11.png) ![alt text](./img/imgREADME/image-12.png) ![alt text](./img/imgREADME/image-14.png) ![Static Badge](https://img.shields.io/badge/TYPEORM-darkred?style=for-the-badge&logo=TS)
 
 ---
 
@@ -180,4 +180,4 @@ https://github.com/MartaGBayona/projectFrontend.git
 
 ## Acknowledgments  :sparkling_heart:
 
-My most sincere thanks to all my colleagues. Especially to Pedro, Marina, and Ana for their invaluable help and support.
+My most sincere thanks to all my colleagues. Especially to [<i class="fab fa-github"></i> Pedro](https://github.com/Eryhnar), [<i class="fab fa-github"></i> Marina](https://github.com/marinaescriva), [<i class="fab fa-github"></i> Ana](https://github.com/ariusvi) and [<i class="fab fa-github"></i> Carlos](https://github.com/CariblaGIT) for their invaluable help and support.
