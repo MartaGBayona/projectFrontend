@@ -10,6 +10,11 @@
     justify-content: flex-start;
     align-items: center;
 
+    background-image:url(../../../img/imgProyect/ImageDesignBody.png);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+
 }
 
 .error {
