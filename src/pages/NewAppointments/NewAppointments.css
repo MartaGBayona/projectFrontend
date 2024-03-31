@@ -1,6 +1,6 @@
 .newAppointmentDesign {
 
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 
     background-color: #1e1a1d;
@@ -9,6 +9,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    font-family: "Josefin Sans", sans-serif;
+    overflow-x: hidden;
 }
 
 .error {
@@ -16,4 +19,56 @@
     color: red;
 }
 
+.selectDesign {
+    height: 3em;
+    width: 18em;
+
+    border: 0.2em solid rgb(49, 47, 47);
+    border-radius: 0.2em;
+    margin: 1.5em;
+    background-color: rgb(49, 47, 47);
+    color: black;
+}
+
+.custom-datetime {
+    height: 3em;
+    width: 18em;
+    border: 0.2em solid rgb(49, 47, 47);
+    border-radius: 0.2em;
+    margin: 1.5em;
+    background-color: rgb(49, 47, 47);
+    color: rgb(260, 260, 260); 
+
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.custom-datetime:focus {
+    border-color: rgb(260, 260, 260);
+    outline: none;
+}
+
+.deleteButtonDesign {
+    height: 3em;
+    width: 15em;
+
+    border-radius: 0.2em;
+
+    background-color: rgb(49, 47, 47);
+    color: rgb(220, 160, 80);
+    font-weight: bold;
+    border: 0.2em solid rgb(220, 160, 80);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.deleteButtonDesign:hover {
+
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgb(260, 260, 260);
+    border: 0.2em solid rgb(220, 160, 80)
+}
 

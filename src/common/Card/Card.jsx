@@ -20,3 +20,13 @@ export const UserCard = ({ firstName, secondName, email, isDeletable, onDelete }
         </div>
     );
 }
+
+export const ServiceCard = ({ service, appointmentDate, onDelete }) => {
+    return (
+        <div className="cardServiceDesign">
+            <div>{service}</div>
+            <div>{appointmentDate}</div>
+            {<button onClick={onDelete}>Borrar</button>}
+        </div>
+    );
+}

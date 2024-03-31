@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CreateAppointment } from "../../services/apiCalls"
 import { Header } from '../../common/Header/Header';
+import dayjs from 'dayjs';
 import "./NewAppointments.css"
 
 const NewAppointment = () => {
@@ -8,11 +9,14 @@ const NewAppointment = () => {
         appointmentDate: "",
         service: ""
     });
-    //const [user, setUser] = useState('');
-    //const [service, setService] = useState('');
     const [message, setMessage] = useState('');
 
     const inputHandler = (e) => {
+        const { name, value } = e.target;
+        console.log("Input name:", name);
+        console.log("Input value:", value);
+        const newValue = name === 'appointmentDate' ? dayjs(value).toISOString() : value;
+        console.log("New value:", newValue);
         setAppointmentData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -26,19 +30,13 @@ const NewAppointment = () => {
             const passport = JSON.parse(localStorage.getItem("passport"));
             const token = passport.token
             console.log(token)
-            // const appointmentData = {
-            //     appointmentDate,
-            //     user: userId,
-            //     service, // Asume que tienes el ID del servicio disponible en el estado del componente
-            // };
+
 
             const response = await CreateAppointment(token, appointmentData);
             console.log(response)
             if (response.success) {
                 setMessage(response.message);
-                // Limpia los campos del formulario después de crear la cita
                 setAppointmentData('');
-                //setService('');
             } else {
                 setMessage(response.message);
             }
@@ -55,18 +53,21 @@ const NewAppointment = () => {
             Solicita tu cita</div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <>Selecciona fecha y hora</>
+                    <>Selecciona fecha y hora </>
                     <input
+                        className="custom-datetime"
                         type="datetime-local"
                         name='appointmentDate'
                         value={appointmentData.appointmentDate || ""}
                         onChange={(e) => inputHandler(e)}
                         required
+                        
                     />
                 </div>
                 <div>
                     <>Selecciona un servicio</>
                     <input
+                        className='selectDesign'
                         type="text"
                         name='service'
                         value={appointmentData.service || ""}
@@ -75,7 +76,7 @@ const NewAppointment = () => {
                     />
                 </div>
                 <button 
-                className='buttonDesign'
+                className='deleteButtonDesign'
                 type="submit">Solicitar cita</button>
             </form>
             {message && <p>{message}</p>}
