@@ -24,6 +24,7 @@
 .authMenu {
     display: flex;
     flex-direction: row;
+    margin-right: 1em;
 }
 
 .headerScroll {

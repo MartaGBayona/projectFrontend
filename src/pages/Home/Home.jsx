@@ -30,8 +30,9 @@ export const Home = () => {
                         Utilizamos solo las mejores tintas, agujas y materiales disponibles en el mercado para garantizar resultados de alta calidad y duraderos. Además, nos mantenemos al día con las últimas tendencias y técnicas en el mundo del tatuaje y el piercing para ofrecerte los mejores servicios posibles.
                     </div>
                 </div>
-
+            
             </div>
+            
         </>
     )
 }

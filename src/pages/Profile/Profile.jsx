@@ -68,6 +68,7 @@ export const Profile = () => {
         if (!loadedData) {
             getUserProfile();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     const updateData = async () => {
