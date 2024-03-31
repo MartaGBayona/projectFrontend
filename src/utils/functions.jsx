@@ -1,4 +1,4 @@
-/* eslint-disable no-case-declarations */
+
 export const validate = (type, value) => {
     switch (type) {
         case "name":
@@ -15,6 +15,7 @@ export const validate = (type, value) => {
             case "e-mail":
             case "correo":
             case "mail":
+                // eslint-disable-next-line no-case-declarations
                 const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
                 if(!emailRegex.test(value)) {

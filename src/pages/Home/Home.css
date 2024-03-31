@@ -9,36 +9,87 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    
 
     overflow-x: hidden;
-}
 
-.titleDesign {
-    font-weight: bold;
-    font-size: xxx-large;
-
-    margin-top: 1em;
 }
 
 .contentDesign {
     font-family: "Josefin Sans", sans-serif;
     text-align: left;
 
+    display: flex;
+    flex-direction: column;
     margin-top: 1.5em;
-    margin-left: 3em;
-    margin-right: 2em;
-}
 
-
-
-.descriptionTitleDesign {
-    font-weight: bold;
-    font-size: x-large;
-
-    margin-top: 1em;
 }
 
 .descriptionDesign {
+    width: 20em;
     font-size: large;
     margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    display: flex;
+    border: 0.2em solid rgb(220, 160, 80);
+    background-color: rgb(49, 47, 47);
+    padding: 2em; 
+    opacity: 0; 
+    animation: slideFromLeftText 1.5s forwards;
+}
+
+@keyframes slideFromLeftText {
+    from {
+        transform: translateX(-100%);
+        opacity: 0; 
+    }
+    to {
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+.titleDesign {
+    width: 100%;
+    display: block;
+    justify-content: flex-start;
+
+    margin-top: 1em;
+    font-size: 9em;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionImage {
+    display: flex;
+    margin-left: 3em;
+    margin-right: 3em;
+    border-radius: 0.5em;
+    transition: ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    animation: slideFromLeft 1.5s forwards;
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0; 
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1; 
+    }
+}
+
+.descriptionImage:hover {
+    transform: translateX(0);
 }

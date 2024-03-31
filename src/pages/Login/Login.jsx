@@ -10,9 +10,11 @@ import "./Login.css"
 
 
 
+
 export const Login = () => {
     const userData = JSON.parse(localStorage.getItem("passport"));
     const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(userData?.token);
 
     const [credenciales, setCredenciales] = useState({
@@ -68,7 +70,7 @@ export const Login = () => {
             localStorage.setItem("passport", JSON.stringify(passport));
 
             setMsgError(
-                `Bienvenido de nuevo ${decoded.name}`
+                `Bienvenido de nuevo ${decoded.firstName}`
             );
 
             setTimeout(() => {
@@ -83,6 +85,9 @@ export const Login = () => {
         <>
             <Header />
             <div className="loginDesign">
+            <div className="titleDesign">
+                    Acceso a usuarios
+                </div>
                 <CustomInput
                     className={`inputDesign ${
                         credencialesError.emailError !== "" ? "inputDesignError" : ""

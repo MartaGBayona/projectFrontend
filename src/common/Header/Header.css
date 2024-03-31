@@ -17,11 +17,14 @@
     left: 0;
     z-index: 1000;
     transition: 0.3s;
+    overflow-x: hidden;
+
 }
 
 .authMenu {
     display: flex;
     flex-direction: row;
+    margin-right: 1em;
 }
 
 .headerScroll {
