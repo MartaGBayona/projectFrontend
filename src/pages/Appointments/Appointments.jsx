@@ -17,15 +17,10 @@ export const Appointment = () => {
     useEffect(() => {
         const getUserAppointment = async () => {
             try {
-                console.log("Obteniendo citas con token:", tokenStorage);
 
                 const fetched = await GetAppointment(tokenStorage);
 
-                console.log("Datos obtenidos:", fetched);
-
-                const formattedAppointments = fetched.data.map((appointment, index) => {
-                    console.log("Appointment:", appointment);
-                    console.log("Index:", index);
+                const formattedAppointments = fetched.data.map((appointment) => {
                     return {
                         ...appointment,
                         id: appointment.id,
@@ -35,7 +30,7 @@ export const Appointment = () => {
                 setAppointments(formattedAppointments);
                 setLoadedData(true);
             } catch (error) {
-                console.log("Error al obtener citas:", error);
+                return error
             }
         };
 
@@ -46,17 +41,13 @@ export const Appointment = () => {
 
     const deleteAppointment = async (appointmentId) => {
         try {
-            console.log("ID del appointment a eliminar:", appointmentId);
 
             if (appointmentId === null || appointmentId === undefined || appointmentId === "") {
                 throw new Error("El ID del appointment es inválido");
             }
-            console.log(appointmentId)
-            console.log(tokenStorage)
             const result = await DeleteAppointment(tokenStorage, appointmentId);
 
             if (result.success) {
-                console.log("Cita eliminada con éxito");
 
                 setLoadedData(false);
                 window.location.reload();
@@ -66,11 +57,9 @@ export const Appointment = () => {
             }
 
         } catch (error) {
-            console.log("Error al eliminar la cita:", error);
+            return ("Error al eliminar la cita:", error);
         }
     };
-
-    console.log("IDs de citas:", appointments.map(appointment => appointment.id));
 
     return (
         <>

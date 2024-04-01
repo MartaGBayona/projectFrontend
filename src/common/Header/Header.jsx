@@ -6,13 +6,15 @@ import "./Header.css"
 export const Header = () => {
     const navigate = useNavigate();
     const passport = JSON.parse(localStorage.getItem("passport"));
-    const [headerScroll, setheaderScroll] = useState (false);
+    const [headerScroll, setheaderScroll] = useState(false);
+
+
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             console.log("scroll top", scrollTop)
-            if(scrollTop > 0) {
+            if (scrollTop > 0) {
                 setheaderScroll(true);
             } else {
                 setheaderScroll(false);
@@ -24,10 +26,12 @@ export const Header = () => {
             window.removeEventListener("scroll", handleScroll)
         };
     }, []);
-    
 
 
-    const logOut =() => {
+
+
+
+    const logOut = () => {
         localStorage.removeItem("passport")
         navigate("/login")
     }
@@ -43,7 +47,7 @@ export const Header = () => {
                 title={"Servicios"}
                 destination={"/services"}
             />
-            
+
             {passport?.token
                 ? (
                     <div className="authMenu">

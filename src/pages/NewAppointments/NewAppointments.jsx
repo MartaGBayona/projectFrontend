@@ -13,27 +13,28 @@ const NewAppointment = () => {
 
     const inputHandler = (e) => {
         const { name, value } = e.target;
-        console.log("Input name:", name);
-        console.log("Input value:", value);
-        const newValue = name === 'appointmentDate' ? dayjs(value).toISOString() : value;
-        console.log("New value:", newValue);
+    
+        let newValue = value;
+        
+        if (name === 'appointmentDate') {
+            const date = dayjs(value).format("YYYY-MM-DDTHH:mm");
+            newValue = date;
+        }
+    
         setAppointmentData((prevState) => ({
             ...prevState,
-            [e.target.name]: e.target.value,
+            [name]: newValue,
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(appointmentData)
         try {
             const passport = JSON.parse(localStorage.getItem("passport"));
             const token = passport.token
-            console.log(token)
 
 
             const response = await CreateAppointment(token, appointmentData);
-            console.log(response)
             if (response.success) {
                 setMessage(response.message);
                 setAppointmentData('');

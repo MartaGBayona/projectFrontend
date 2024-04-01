@@ -32,6 +32,6 @@ export const validate = (type, value) => {
 
                 return "";
             default:
-                console.log("mensaje default")
+                return("mensaje default")
     }
 }

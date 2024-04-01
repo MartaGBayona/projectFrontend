@@ -35,15 +35,25 @@ We carried out a frontend project for a potential tattoo and piercing shop. The 
 <h4>BackEnd</h4>
 
 - Go this root: https://github.com/MartaGBayona/project_BackEnd.git
+
 - Clone repository.
+
     ``npm install``.
+
 - Start Docker.
+
 - Start MySql.
+
 - Create a new schema to import data.
+
 - Fill .env and bd.ts files with the corresponding data.
+
     ``npm run dev``.
+
     ``npm run run-migrations``.
+
 - Copy the data from the SQL folder into MySQL and execute the import.
+
 - Import file CollectorProject4Backend_GimenoBayonaMarta for Thunder Client
 
 <h4>FrontEnd</h4>
@@ -113,10 +123,15 @@ role: "user"
 
 - There is no time restriction: past days and nighttime hours can be selected.
 - Services are chosen by ID, not by name. The order is as follows:
+
     1 = Tatuajes personalizados
+
 	2 = Tatuajes del catálogo
+
 	3 = Restauración y rejuvenecimiento de trabajos
+
 	4 = Colocación de piercings y dilataciones
+
 	5 = Venta de piercings y otros artículos
 
 <image src="./img/imgREADME/SolicitarCita.png" alt="New Appointment">

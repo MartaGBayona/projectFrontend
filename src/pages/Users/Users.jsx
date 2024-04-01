@@ -14,7 +14,6 @@ export const Users = () => {
             const BringData = async () => {
                 try {
                     const fetched = await GetUsers(passport.token);
-                    console.log("Datos de usuarios:", fetched);
                     setUsers(fetched);
                 } catch (error) {
                     setErrorMsg("Error al obtener usuarios: " + error.message);
@@ -23,7 +22,7 @@ export const Users = () => {
 
             BringData();
         }
-    }, [users]);
+    });
 
     const handleDelete = async (userId) => {
         try {
