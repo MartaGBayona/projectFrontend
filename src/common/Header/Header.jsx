@@ -13,7 +13,6 @@ export const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            console.log("scroll top", scrollTop)
             if (scrollTop > 0) {
                 setheaderScroll(true);
             } else {
@@ -26,10 +25,6 @@ export const Header = () => {
             window.removeEventListener("scroll", handleScroll)
         };
     }, []);
-
-
-
-
 
     const logOut = () => {
         localStorage.removeItem("passport")

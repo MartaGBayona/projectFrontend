@@ -61,7 +61,7 @@ export const Profile = () => {
                     email: fetched.data.email,
                 });
             } catch (error) {
-                console.log(error)
+                return(error)
             }
         };
 
@@ -84,7 +84,7 @@ export const Profile = () => {
 
             setWrite("disabled");
         } catch (error) {
-            console.log(error);
+            return(error);
         }
     };
 

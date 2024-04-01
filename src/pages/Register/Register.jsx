@@ -53,10 +53,7 @@ export const Register = () => {
             }
 
             const fetched = await RegisterUser(user);
-
-            console.log(fetched)
             setMsgError(fetched.message)
-
             setTimeout(() => {
                 navigate("/")
             }, 1200);

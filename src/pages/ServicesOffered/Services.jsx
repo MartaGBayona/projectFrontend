@@ -14,7 +14,7 @@ export const Services = () => {
                     const fetched = await GetServices();
                     setServices(fetched)
                 } catch (error) {
-                    console.log(error);
+                    return error;
                 }
             };
 
@@ -23,7 +23,7 @@ export const Services = () => {
     }, [services]);
 
     const clickedService = (service) => {
-        console.log(service)
+        return(service)
     }
 
     return (
